@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Audio files (downloaded/generated at runtime)
+audio_cache/
+*.flac
+*.mp3
+*.wav
+*.ogg
+*.m4a
+
+# Environment / secrets
+.env
+.env.*
+
+# Reports (generated at runtime — results JSON included for reproducibility)
+reports/*.html
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
