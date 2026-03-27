@@ -172,18 +172,20 @@ def prepare_sample(sample: AudioSample, all_samples: dict[str, str]) -> Optional
 
     # Downloadable samples
     if sample.url:
-        raw_dest = os.path.join(AUDIO_CACHE_DIR, f"{sample.id}_raw{os.path.splitext(sample.url.split('?')[0])[1]}")
-        success = download_file(sample.url, raw_dest, sample.name)
-        if not success:
-            return None
-
-        # Trim if needed (supports both trim_start and trim_seconds)
+        # Check if final prepared file already exists (bundled in repo)
         needs_trim = sample.trim_seconds or sample.trim_start
         if needs_trim:
             trimmed_dest = os.path.join(AUDIO_CACHE_DIR, f"{sample.id}.wav")
             if os.path.exists(trimmed_dest):
                 print(f"    [cached] {sample.name} (trimmed)")
                 return trimmed_dest
+
+        raw_dest = os.path.join(AUDIO_CACHE_DIR, f"{sample.id}_raw{os.path.splitext(sample.url.split('?')[0])[1]}")
+        success = download_file(sample.url, raw_dest, sample.name)
+        if not success:
+            return None
+
+        if needs_trim:
             try:
                 max_sec = sample.trim_seconds or 9999.0
                 start_sec = sample.trim_start or 0.0
