@@ -6,20 +6,19 @@ __pycache__/
 venv/
 *.egg-info/
 
-# Audio files (downloaded/generated at runtime)
-audio_cache/
-*.flac
-*.mp3
-*.wav
-*.ogg
-*.m4a
+# Audio: exclude redundant raw files (trimmed versions included)
+audio_cache/accent_indian_raw.mp3
+audio_cache/accent_french_raw.mp3
+audio_cache/gettysburg_raw.mp3
 
 # Environment / secrets
 .env
 .env.*
 
-# Reports (generated at runtime — results JSON included for reproducibility)
+# Reports (HTML generated at runtime, JSON kept for reproducibility)
 reports/*.html
+reports/dashboard_component.jsx
+reports/embed_snippet.html
 
 # OS
 .DS_Store
