@@ -67,7 +67,7 @@ python run.py --providers cohere openai
 python run.py --dry-run
 ```
 
-The script downloads audio samples automatically, runs the benchmark, and generates an HTML report in `reports/`.
+Audio samples are included in `audio_cache/` — no downloading or trimming needed. The script runs the benchmark and generates an HTML report in `reports/`.
 
 ## Methodology
 
@@ -85,7 +85,8 @@ The script downloads audio samples automatically, runs the benchmark, and genera
 run.py          Main benchmark runner
 config.py       Sample definitions, provider metadata, pricing
 providers.py    API wrappers (Cohere, OpenAI, Deepgram, AssemblyAI)
-samples.py      Audio download, caching, trimming, noise mixing
+samples.py      Audio sample preparation (caching, noise mixing)
+audio_cache/    Prepared audio samples (included in repo)
 analysis.py     WER, punctuation scoring, statistics, diff highlighting
 report.py       HTML report generator
 ```
